@@ -75,17 +75,25 @@
   nav a:hover{color:var(--gold)}
   .nav-toggle{display:none;background:none;border:0;color:var(--text);font-size:1.6rem;cursor:pointer}
 
-  /* ---- Hero (banner image) ---- */
-  .hero{padding:48px 0 24px}
-  .hero-banner{
-    position:relative;border-radius:22px;overflow:hidden;
-    box-shadow:0 22px 60px rgba(0,0,0,.55), 0 0 0 1px var(--card-border);
+  /* ---- Hero (full-bleed banner as background) ---- */
+  .hero{
+    position:relative;width:100%;padding:0;
+    aspect-ratio:1024 / 536;min-height:340px;
+    background:url('assets/hero.jpg') center center / cover no-repeat;
+    display:flex;align-items:flex-end;justify-content:center;
   }
-  .hero-banner img{width:100%;height:auto;display:block}
-  .hero-intro{text-align:center;padding:44px 0 8px;max-width:720px;margin:0 auto}
-  .hero-intro p{color:var(--text-dim);font-size:1.1rem;margin-bottom:18px}
-  .hero-intro .lead{color:var(--text);font-size:1.18rem}
-  .hero-cta{margin-top:30px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .hero::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:48%;pointer-events:none;
+    background:linear-gradient(to top, rgba(22,10,36,.94), rgba(22,10,36,.35) 55%, transparent);
+  }
+  .hero-cta{
+    position:relative;z-index:2;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;
+    padding-bottom:7%;
+  }
+  .hero .btn{width:auto}
+  .intro{text-align:center;max-width:760px;margin:0 auto}
+  .intro .lead{color:var(--text);font-size:1.28rem;margin-bottom:18px}
+  .intro p{color:var(--text-dim);font-size:1.12rem}
 
   .btn{
     display:inline-block;padding:14px 30px;border-radius:40px;
@@ -100,10 +108,10 @@
   .btn-ghost:hover{background:rgba(169,130,230,.12)}
 
   /* ---- Sections ---- */
-  section{padding:76px 0}
+  section{padding:110px 0}
   .section-title{text-align:center;margin-bottom:14px;font-size:2.2rem}
   .section-title em{color:var(--violet-light);font-style:italic}
-  .section-sub{text-align:center;color:var(--text-dim);max-width:640px;margin:24px auto 56px}
+  .section-sub{text-align:center;color:var(--text-dim);max-width:640px;margin:26px auto 64px}
   .divider{width:60px;height:2px;margin:16px auto 0;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
 
   /* ---- About ---- */
@@ -154,7 +162,7 @@
     .cards{grid-template-columns:repeat(2,1fr)}
   }
   @media(max-width:860px){
-    section{padding:60px 0}
+    section{padding:80px 0}
     .about{grid-template-columns:1fr;gap:34px}
     .about h2{text-align:center}
     .about .role{text-align:center}
@@ -170,11 +178,11 @@
   }
   @media(max-width:600px){
     .wrap{padding:0 20px}
-    .hero{padding:28px 0 8px}
-    .hero-banner{border-radius:16px}
-    .hero-intro{padding:34px 0 4px}
-    .hero-intro .lead{font-size:1.05rem}
-    .hero-intro p{font-size:1rem}
+    section{padding:64px 0}
+    .hero-cta{padding-bottom:6%}
+    .hero-cta .btn{padding:11px 20px;font-size:.85rem}
+    .intro .lead{font-size:1.1rem}
+    .intro p{font-size:1rem}
     .cards{grid-template-columns:1fr}
     .section-title{font-size:1.8rem}
     .contact .card-box{padding:40px 26px}
@@ -205,18 +213,17 @@
 </header>
 
 <!-- HERO -->
-<section id="inicio" class="wrap hero">
-  <div class="hero-banner">
-    <img src="assets/hero.jpg" alt="Índigo Nicki · Un espacio para sanar — Tarot evolutivo, oráculo, velomancia y limpiezas energéticas">
+<section id="inicio" class="hero" role="img" aria-label="Índigo Nicki · Un espacio para sanar — Tarot evolutivo, oráculo, velomancia y limpiezas energéticas">
+  <div class="hero-cta">
+    <a href="#contacto" class="btn btn-primary">Reservá tu sesión</a>
+    <a href="#servicios" class="btn btn-ghost">Ver servicios</a>
   </div>
-  <div class="hero-intro">
-    <p class="lead">Un espacio para quienes buscan respuestas, claridad y sanación.</p>
-    <p>A través del tarot, la lectura energética y el Reiki, acompaño procesos de transformación y despertar interior. A veces el alma necesita una señal, una guía… o simplemente alguien que traduzca lo que sentís.</p>
-    <div class="hero-cta">
-      <a href="#contacto" class="btn btn-primary">Reservá tu sesión</a>
-      <a href="#servicios" class="btn btn-ghost">Ver servicios</a>
-    </div>
-  </div>
+</section>
+
+<!-- INTRO -->
+<section class="wrap intro">
+  <p class="lead">Un espacio para quienes buscan respuestas, claridad y sanación.</p>
+  <p>A través del tarot, la lectura energética y el Reiki, acompaño procesos de transformación y despertar interior. A veces el alma necesita una señal, una guía… o simplemente alguien que traduzca lo que sentís.</p>
 </section>
 
 <!-- SOBRE MÍ -->
