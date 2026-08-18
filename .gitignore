@@ -1,2 +1,5 @@
 # Archivos originales de Instagram (ya copiados a assets/ como .jpg)
 *.jfif
+
+# Imagen original de Gemini (ya copiada a assets/hero.jpg)
+Gemini_*.jpg

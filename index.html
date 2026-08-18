@@ -59,6 +59,14 @@
 
   .wrap{max-width:var(--max);margin:0 auto;padding-left:26px;padding-right:26px}
 
+  /* ---- Soft cursor glow ---- */
+  #cursor-glow{position:fixed;top:0;left:0;width:420px;height:420px;border-radius:50%;
+    pointer-events:none;z-index:9999;opacity:0;transform:translate(-50%,-50%);
+    background:radial-gradient(circle, rgba(190,160,245,0.16), rgba(160,120,230,0.06) 42%, transparent 68%);
+    mix-blend-mode:screen;transition:opacity .5s ease, transform .18s ease-out;will-change:transform}
+  @media(hover:none){#cursor-glow{display:none}}
+  @media(prefers-reduced-motion:reduce){#cursor-glow{display:none}}
+
   /* ---- Reveal on scroll ---- */
   .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
   .reveal.in{opacity:1;transform:none}
@@ -86,14 +94,11 @@
   .btn-ghost{border:1px solid var(--violet-light);color:var(--violet-soft)}
   .btn-ghost:hover{background:rgba(169,130,230,.14);transform:translateY(-3px)}
 
-  /* ---- Hero ---- */
-  .hero{position:relative;width:100%;height:clamp(440px,62vh,560px);
-    background:url('assets/hero.jpg') center center / cover no-repeat;
-    display:flex;align-items:flex-end;justify-content:center}
-  .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:50%;pointer-events:none;
-    background:linear-gradient(to top,rgba(22,10,36,.92),rgba(22,10,36,.25) 55%,transparent)}
-  .hero-cta{position:relative;z-index:2;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;padding-bottom:5%}
-  .hero .btn{width:auto}
+  /* ---- Hero (imagen completa) ---- */
+  .hero{width:100%;line-height:0;background:#160a24}
+  .hero-img{width:100%;height:auto;display:block}
+  .hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;padding:30px 20px 10px}
+  .hero-cta .btn{width:auto}
 
   /* ---- Moving marquee ---- */
   .marquee{overflow:hidden;white-space:nowrap;padding:16px 0;background:rgba(8,3,16,0.4);
@@ -187,7 +192,6 @@
   @media(max-width:960px){.cards,.steps,.values{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:860px){
     .sec{padding:60px 0}
-    .hero{height:auto;aspect-ratio:1024 / 572}
     .about{grid-template-columns:1fr;gap:32px}
     .about-img{max-width:320px;margin:0 auto}
     .about h2,.about .role{text-align:center}
@@ -214,6 +218,7 @@
 <body>
 <div class="stars-bg"></div>
 <div class="orbs"><span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span></div>
+<div id="cursor-glow"></div>
 <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 
 <header class="nav">
@@ -233,12 +238,13 @@
 </header>
 
 <!-- HERO -->
-<section id="inicio" class="hero" role="img" aria-label="Índigo Nicki · Un espacio para sanar — Tarot evolutivo, oráculo, velomancia y limpiezas energéticas">
-  <div class="hero-cta">
-    <a href="#contacto" class="btn btn-primary">Reservá tu sesión</a>
-    <a href="#servicios" class="btn btn-ghost">Ver servicios</a>
-  </div>
+<section id="inicio" class="hero">
+  <img class="hero-img" src="assets/hero.jpg" alt="Índigo Nicki · Un espacio para sanar — Tarot evolutivo, oráculo, velomancia y limpiezas energéticas">
 </section>
+<div class="hero-cta">
+  <a href="#contacto" class="btn btn-primary">Reservá tu sesión</a>
+  <a href="#servicios" class="btn btn-ghost">Ver servicios</a>
+</div>
 
 <!-- MOVING MARQUEE (separator with services) -->
 <div class="marquee">
@@ -406,6 +412,18 @@
 
 <script>
   function closeMenu(){document.getElementById('menu').classList.remove('open')}
+
+  /* Soft cursor glow */
+  (function(){
+    var g=document.getElementById('cursor-glow'); if(!g||window.matchMedia('(hover:none)').matches)return;
+    var x=0,y=0,shown=false;
+    window.addEventListener('mousemove',function(e){
+      x=e.clientX;y=e.clientY;
+      g.style.transform='translate('+x+'px,'+y+'px) translate(-50%,-50%)';
+      if(!shown){shown=true;g.style.opacity='1';}
+    });
+    document.addEventListener('mouseleave',function(){g.style.opacity='0';shown=false;});
+  })();
 
   (function(){
     var els=document.querySelectorAll('.reveal');
