@@ -232,11 +232,11 @@
     .nav-toggle{display:block}
   }
   @media(max-width:768px){
-    /* Hero vertical optimizado para celular */
+    /* Hero vertical optimizado para celular: contenido abajo, sin pisar el titulo */
     .hero-bg{background-image:url('assets/hero-mobile.jpg')}
-    .hero{align-items:center}
-    .hero::before{background:radial-gradient(ellipse at 50% 60%, rgba(22,10,36,.74), rgba(22,10,36,.36) 46%, rgba(22,10,36,.1) 72%, transparent)}
-    .hero-content{padding-bottom:0}
+    .hero{align-items:flex-end}
+    .hero::before{background:linear-gradient(to top,rgba(22,10,36,.96) 20%,rgba(22,10,36,.74) 44%,rgba(22,10,36,.22) 66%,transparent 82%)}
+    .hero-content{padding-bottom:7vh}
   }
   @media(max-width:600px){
     .wrap{padding-left:20px;padding-right:20px}
