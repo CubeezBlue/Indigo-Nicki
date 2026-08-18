@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Índigo · Espacio de Sanación</title>
-<meta name="description" content="Índigo · Espacio de sanación. Tarot, lectura energética y rituales para acompañar tu proceso de transformación y despertar interior. Con Nicolle.">
+<title>Índigo Nicki · Un espacio para sanar</title>
+<meta name="description" content="Índigo Nicki · Un espacio para sanar. Tarot evolutivo, oráculo, velomancia, Reiki y limpiezas energéticas para acompañar tu transformación y despertar interior.">
 <style>
   :root{
     --bg:#160a24;
@@ -29,6 +29,7 @@
     overflow-x:hidden;
   }
   h1,h2,h3,.serif{font-family:Georgia,'Times New Roman',serif}
+  img{max-width:100%;display:block}
 
   /* ---- Starry animated background ---- */
   .stars-bg{
@@ -57,7 +58,7 @@
   .stars-bg::after{background-size:250px 250px;opacity:.3;animation-delay:2s}
   @keyframes twinkle{from{opacity:.25}to{opacity:.7}}
 
-  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
 
   /* ---- Nav ---- */
   header.nav{
@@ -74,29 +75,17 @@
   nav a:hover{color:var(--gold)}
   .nav-toggle{display:none;background:none;border:0;color:var(--text);font-size:1.6rem;cursor:pointer}
 
-  /* ---- Hero ---- */
-  .hero{
-    display:grid;grid-template-columns:1.1fr .9fr;gap:48px;
-    align-items:center;padding:80px 0 90px;
+  /* ---- Hero (banner image) ---- */
+  .hero{padding:48px 0 24px}
+  .hero-banner{
+    position:relative;border-radius:22px;overflow:hidden;
+    box-shadow:0 22px 60px rgba(0,0,0,.55), 0 0 0 1px var(--card-border);
   }
-  .hero .eyebrow{
-    color:var(--gold);letter-spacing:4px;font-size:.8rem;text-transform:uppercase;margin-bottom:18px
-  }
-  .hero h1{font-size:3.3rem;line-height:1.15;margin-bottom:22px}
-  .hero h1 em{color:var(--violet-light);font-style:italic}
-  .hero p{color:var(--text-dim);font-size:1.08rem;max-width:520px;margin-bottom:32px}
-  .hero-photo{
-    position:relative;justify-self:center;max-width:360px;width:100%;
-  }
-  .hero-photo img{
-    width:100%;border-radius:18px;display:block;
-    box-shadow:0 20px 60px rgba(0,0,0,.5), 0 0 0 1px var(--card-border);
-  }
-  .hero-photo::after{
-    content:"";position:absolute;inset:-16px;border-radius:26px;z-index:-1;
-    background:radial-gradient(circle,rgba(169,130,230,.5),transparent 70%);
-    filter:blur(14px);
-  }
+  .hero-banner img{width:100%;height:auto;display:block}
+  .hero-intro{text-align:center;padding:44px 0 8px;max-width:720px;margin:0 auto}
+  .hero-intro p{color:var(--text-dim);font-size:1.1rem;margin-bottom:18px}
+  .hero-intro .lead{color:var(--text);font-size:1.18rem}
+  .hero-cta{margin-top:30px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 
   .btn{
     display:inline-block;padding:14px 30px;border-radius:40px;
@@ -107,21 +96,21 @@
     color:#fff;box-shadow:0 8px 24px rgba(106,63,160,.5);
   }
   .btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(106,63,160,.7)}
-  .btn-ghost{border:1px solid var(--violet-light);color:var(--violet-soft);margin-left:12px}
+  .btn-ghost{border:1px solid var(--violet-light);color:var(--violet-soft)}
   .btn-ghost:hover{background:rgba(169,130,230,.12)}
 
   /* ---- Sections ---- */
-  section{padding:80px 0}
+  section{padding:76px 0}
   .section-title{text-align:center;margin-bottom:14px;font-size:2.2rem}
   .section-title em{color:var(--violet-light);font-style:italic}
-  .section-sub{text-align:center;color:var(--text-dim);max-width:620px;margin:0 auto 54px}
+  .section-sub{text-align:center;color:var(--text-dim);max-width:640px;margin:24px auto 56px}
   .divider{width:60px;height:2px;margin:16px auto 0;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
 
   /* ---- About ---- */
   .about{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center}
-  .about-img{position:relative}
   .about-img img{width:100%;border-radius:16px;box-shadow:0 16px 44px rgba(0,0,0,.45)}
-  .about h2{font-size:2.1rem;margin-bottom:20px;text-align:left}
+  .about h2{font-size:2.1rem;margin-bottom:12px;text-align:left}
+  .about .role{color:var(--gold);letter-spacing:2px;font-size:.82rem;text-transform:uppercase;margin-bottom:20px}
   .about p{color:var(--text-dim);margin-bottom:16px}
   .about .signature{color:var(--gold);font-family:Georgia,serif;font-style:italic;font-size:1.15rem;margin-top:8px}
 
@@ -129,12 +118,12 @@
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
   .card{
     background:var(--card);border:1px solid var(--card-border);border-radius:18px;
-    padding:36px 28px;text-align:center;transition:transform .3s,border-color .3s,box-shadow .3s;
+    padding:38px 30px;text-align:center;transition:transform .3s,border-color .3s,box-shadow .3s;
     backdrop-filter:blur(4px);
   }
   .card:hover{transform:translateY(-8px);border-color:var(--violet-light);box-shadow:0 18px 40px rgba(0,0,0,.4)}
   .card .icon{font-size:2.6rem;margin-bottom:18px;display:block}
-  .card h3{font-size:1.3rem;margin-bottom:12px;color:var(--violet-soft)}
+  .card h3{font-size:1.28rem;margin-bottom:12px;color:var(--violet-soft)}
   .card p{color:var(--text-dim);font-size:.96rem}
 
   /* ---- Cards showcase strip ---- */
@@ -152,33 +141,48 @@
   }
   .contact h2{font-size:2.1rem;margin-bottom:16px}
   .contact p{color:var(--text-dim);margin-bottom:28px}
-  .social{display:flex;gap:20px;justify-content:center;margin-top:26px}
+  .social{display:flex;gap:20px;justify-content:center;margin-top:26px;flex-wrap:wrap}
   .social a{color:var(--text-dim);text-decoration:none;font-size:.92rem;transition:color .2s}
   .social a:hover{color:var(--gold)}
 
   /* ---- Footer ---- */
-  footer{text-align:center;padding:40px 0;border-top:1px solid var(--card-border);color:var(--text-dim);font-size:.85rem}
+  footer{text-align:center;padding:44px 24px;border-top:1px solid var(--card-border);color:var(--text-dim);font-size:.85rem}
   footer .heart{color:var(--violet-light)}
 
   /* ---- Responsive ---- */
+  @media(max-width:960px){
+    .cards{grid-template-columns:repeat(2,1fr)}
+  }
   @media(max-width:860px){
-    .hero{grid-template-columns:1fr;text-align:center;padding:56px 0 60px}
-    .hero p{margin-left:auto;margin-right:auto}
-    .hero-photo{order:-1;max-width:300px}
-    .about{grid-template-columns:1fr;gap:32px}
+    section{padding:60px 0}
+    .about{grid-template-columns:1fr;gap:34px}
     .about h2{text-align:center}
+    .about .role{text-align:center}
     .about-img{max-width:320px;margin:0 auto}
-    .cards{grid-template-columns:1fr}
-    .hero h1{font-size:2.5rem}
     nav ul{
       position:absolute;top:66px;right:0;left:0;flex-direction:column;gap:0;
       background:rgba(22,10,36,.97);border-bottom:1px solid var(--card-border);
       max-height:0;overflow:hidden;transition:max-height .3s
     }
-    nav ul.open{max-height:320px}
+    nav ul.open{max-height:340px}
     nav a{display:block;padding:16px 24px;border-top:1px solid rgba(169,130,230,.12)}
     .nav-toggle{display:block}
-    .btn-ghost{margin-left:0;margin-top:12px}
+  }
+  @media(max-width:600px){
+    .wrap{padding:0 20px}
+    .hero{padding:28px 0 8px}
+    .hero-banner{border-radius:16px}
+    .hero-intro{padding:34px 0 4px}
+    .hero-intro .lead{font-size:1.05rem}
+    .hero-intro p{font-size:1rem}
+    .cards{grid-template-columns:1fr}
+    .section-title{font-size:1.8rem}
+    .contact .card-box{padding:40px 26px}
+    .btn{display:block;width:100%;text-align:center}
+  }
+  @media(max-width:380px){
+    .wrap{padding:0 16px}
+    .brand{font-size:1.2rem;letter-spacing:2px}
   }
 </style>
 </head>
@@ -202,16 +206,16 @@
 
 <!-- HERO -->
 <section id="inicio" class="wrap hero">
-  <div class="hero-text">
-    <p class="eyebrow">✨ Espacio de sanación ✨</p>
-    <h1>Bienvenida/o a <em>Índigo</em></h1>
-    <p>Un espacio para quienes buscan respuestas, claridad y sanación. A través del tarot, la lectura energética y distintos rituales, acompaño procesos de transformación y despertar interior.</p>
-    <p style="margin-bottom:36px">A veces el alma necesita una señal, una guía… o simplemente alguien que traduzca lo que sentís.</p>
-    <a href="#contacto" class="btn btn-primary">Reservá tu sesión</a>
-    <a href="#servicios" class="btn btn-ghost">Ver servicios</a>
+  <div class="hero-banner">
+    <img src="assets/hero.jpg" alt="Índigo Nicki · Un espacio para sanar — Tarot evolutivo, oráculo, velomancia y limpiezas energéticas">
   </div>
-  <div class="hero-photo">
-    <img src="assets/img1.jpg" alt="Nicolle · Índigo, espacio de sanación">
+  <div class="hero-intro">
+    <p class="lead">Un espacio para quienes buscan respuestas, claridad y sanación.</p>
+    <p>A través del tarot, la lectura energética y el Reiki, acompaño procesos de transformación y despertar interior. A veces el alma necesita una señal, una guía… o simplemente alguien que traduzca lo que sentís.</p>
+    <div class="hero-cta">
+      <a href="#contacto" class="btn btn-primary">Reservá tu sesión</a>
+      <a href="#servicios" class="btn btn-ghost">Ver servicios</a>
+    </div>
   </div>
 </section>
 
@@ -219,13 +223,14 @@
 <section id="sobre-mi" class="wrap">
   <div class="about">
     <div class="about-img">
-      <img src="assets/img1.jpg" alt="Nicolle">
+      <img src="assets/img1.jpg" alt="Nicolle · Índigo">
     </div>
     <div>
       <h2>Soy <span style="color:var(--violet-light)">Nicolle</span> 🤍</h2>
-      <p>Y este espacio también es parte de mi propio camino. Siempre sentí una conexión profunda con lo invisible: los mensajes, las señales, la energía y todo lo que no siempre puede explicarse con palabras.</p>
-      <p>Creo profundamente en sanar… en volver a uno mismo, en comprender lo que duele y en transformar lo que pesa. Creo que muchas veces no necesitamos más respuestas afuera, sino aprender a escuchar lo que el alma expresa.</p>
-      <p>Hoy elijo abrir este espacio para acompañar a otros en esos procesos.</p>
+      <p class="role">Tarotista · Reikista · Terapeuta energética</p>
+      <p>Este espacio también es parte de mi propio camino. Siempre sentí una conexión profunda con lo invisible: los mensajes, las señales, la energía y todo lo que no siempre puede explicarse con palabras.</p>
+      <p>Como <strong>reikista</strong>, canalizo energía de sanación para acompañarte a soltar lo que pesa y reencontrar tu equilibrio. Creo profundamente en volver a uno mismo, en comprender lo que duele y en transformar lo que ya no suma.</p>
+      <p>Muchas veces no necesitamos más respuestas afuera, sino aprender a escuchar lo que el alma expresa. Hoy elijo abrir este espacio para acompañar a otros en esos procesos.</p>
       <p class="signature">Con amor, Nicolle 🕊️ 🧚‍♀️💜</p>
     </div>
   </div>
@@ -233,24 +238,39 @@
 
 <!-- SERVICIOS -->
 <section id="servicios" class="wrap">
-  <h2 class="section-title serif">Acá vas a <em>encontrar</em></h2>
+  <h2 class="section-title serif">Servicios &amp; <em>terapias</em></h2>
   <div class="divider"></div>
-  <p class="section-sub" style="margin-top:24px">Herramientas para reconectar con vos, comprender lo que sentís y transformar lo que pesa.</p>
+  <p class="section-sub">Herramientas para reconectar con vos, comprender lo que sentís y transformar lo que pesa. Cada sesión es un encuentro personalizado y respetuoso de tu proceso.</p>
   <div class="cards">
     <div class="card">
       <span class="icon">🔮</span>
-      <h3>Lectura de Tarot</h3>
-      <p>Una guía para navegar la incertidumbre. Claridad ante decisiones, vínculos y caminos que aún no ves con nitidez.</p>
+      <h3>Tarot evolutivo</h3>
+      <p>Más que predecir, el tarot evolutivo te muestra el aprendizaje detrás de cada situación. Ganás claridad sobre tus vínculos, decisiones y el camino a recorrer, desde la conciencia y la libertad.</p>
     </div>
     <div class="card">
-      <span class="icon">🌿</span>
-      <h3>Terapias energéticas</h3>
-      <p>Lectura y limpieza energética para soltar cargas, equilibrar tu energía y volver a tu centro.</p>
+      <span class="icon">🌟</span>
+      <h3>Lectura de oráculo</h3>
+      <p>Mensajes canalizados a través de las cartas para escuchar lo que tu alma necesita recordar. Una guía amorosa para cuando buscás una señal o una dirección clara.</p>
     </div>
     <div class="card">
       <span class="icon">🕯️</span>
-      <h3>Rituales y manifestación</h3>
-      <p>Mensajes canalizados y herramientas para sanar heridas del pasado y manifestar lo que deseás crear.</p>
+      <h3>Velomancia</h3>
+      <p>El arte de leer la llama, la cera y el humo de la vela. Un ritual revelador que muestra qué energías te rodean y qué se está moviendo dentro de tu proceso.</p>
+    </div>
+    <div class="card">
+      <span class="icon">🙌</span>
+      <h3>Reiki</h3>
+      <p>Energía de sanación universal canalizada a través de las manos. El Reiki armoniza cuerpo, mente y emociones, alivia el estrés y reactiva tu equilibrio natural.</p>
+    </div>
+    <div class="card">
+      <span class="icon">🌿</span>
+      <h3>Limpiezas energéticas</h3>
+      <p>Liberá cargas, bloqueos y energías densas que no te pertenecen. Armonizo tu campo energético para que vuelvas a sentirte liviana/o, protegida/o y en tu centro.</p>
+    </div>
+    <div class="card">
+      <span class="icon">✨</span>
+      <h3>Rituales &amp; manifestación</h3>
+      <p>Rituales personalizados para sanar heridas del pasado, cerrar ciclos y manifestar aquello que deseás crear. Herramientas concretas para acompañar tu intención.</p>
     </div>
   </div>
 </section>
@@ -259,7 +279,7 @@
 <section class="wrap showcase">
   <h2 class="section-title serif">Elegí una <em>carta</em></h2>
   <div class="divider"></div>
-  <p class="section-sub" style="margin-top:24px">Cada mensaje llega en el momento justo. Si llegaste hasta acá… no es casualidad.</p>
+  <p class="section-sub">Cada mensaje llega en el momento justo. Si llegaste hasta acá… no es casualidad.</p>
   <img src="assets/img5.jpg" alt="Elegí una carta y descubrí tu mensaje">
 </section>
 
@@ -276,7 +296,7 @@
 </section>
 
 <footer>
-  <p>ÍNDIGO · Espacio de sanación — Con amor, Nicolle <span class="heart">💜</span></p>
+  <p>ÍNDIGO NICKI · Un espacio para sanar — Con amor, Nicolle <span class="heart">💜</span></p>
   <p style="margin-top:8px;opacity:.7">Bienvenida/o a tu despertar ✨</p>
 </footer>
 
