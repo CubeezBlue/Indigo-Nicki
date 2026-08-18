@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Índigo Nicki · Un espacio para sanar</title>
-<meta name="description" content="Índigo Nicki · Un espacio para sanar. Tarot evolutivo, oráculo, velomancia, Reiki y limpiezas energéticas para acompañar tu transformación y despertar interior.">
+<meta name="description" content="Índigo Nicki · Un espacio para sanar. Tarot evolutivo, oráculo, velomancia, Reiki, mensajes canalizados y limpiezas energéticas para acompañar tu transformación y despertar interior. Con Nicolle.">
 <style>
   :root{
     --bg:#160a24;
@@ -17,27 +17,25 @@
     --text-dim:#c3b3dd;
     --card:rgba(40,22,66,0.55);
     --card-border:rgba(169,130,230,0.28);
-    --max:1120px;
+    --max:1140px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{
     font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
-    color:var(--text);
-    background:var(--bg);
-    line-height:1.7;
-    overflow-x:hidden;
+    color:var(--text);background:var(--bg);line-height:1.7;overflow-x:hidden;
   }
   h1,h2,h3,.serif{font-family:Georgia,'Times New Roman',serif}
   img{max-width:100%;display:block}
+  a{color:inherit}
 
-  /* ---- Starry animated background ---- */
+  /* ---- Backgrounds & floating decor ---- */
   .stars-bg{
-    position:fixed;inset:0;z-index:-2;
+    position:fixed;inset:0;z-index:-3;
     background:
       radial-gradient(circle at 20% 15%, rgba(106,63,160,0.55), transparent 45%),
       radial-gradient(circle at 85% 25%, rgba(139,90,200,0.35), transparent 40%),
-      radial-gradient(circle at 50% 90%, rgba(80,40,130,0.5), transparent 55%),
+      radial-gradient(circle at 50% 92%, rgba(80,40,130,0.5), transparent 55%),
       linear-gradient(160deg,#160a24 0%, #1e0f30 45%, #241141 100%);
   }
   .stars-bg::before,.stars-bg::after{
@@ -51,102 +49,154 @@
       radial-gradient(1.5px 1.5px at 90% 60%, #fff, transparent),
       radial-gradient(1px 1px at 33% 15%, #fff, transparent),
       radial-gradient(1px 1px at 70% 40%, #e9c893, transparent);
-    background-size:400px 400px;
-    opacity:.55;
-    animation:twinkle 6s ease-in-out infinite alternate;
+    background-size:400px 400px;opacity:.55;animation:twinkle 6s ease-in-out infinite alternate;
   }
   .stars-bg::after{background-size:250px 250px;opacity:.3;animation-delay:2s}
   @keyframes twinkle{from{opacity:.25}to{opacity:.7}}
 
-  .wrap{max-width:var(--max);margin:0 auto;padding-left:28px;padding-right:28px}
+  .orbs{position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden}
+  .orb{position:absolute;border-radius:50%;filter:blur(60px);opacity:.35}
+  .orb.o1{width:340px;height:340px;background:#6a3fa0;top:8%;left:-80px;animation:float1 16s ease-in-out infinite}
+  .orb.o2{width:280px;height:280px;background:#8b5ac8;top:52%;right:-70px;animation:float2 20s ease-in-out infinite}
+  .orb.o3{width:220px;height:220px;background:#e9c893;opacity:.14;top:80%;left:40%;animation:float1 24s ease-in-out infinite}
+  @keyframes float1{0%,100%{transform:translateY(0)}50%{transform:translateY(40px)}}
+  @keyframes float2{0%,100%{transform:translateY(0)}50%{transform:translateY(-46px)}}
+
+  .wrap{max-width:var(--max);margin:0 auto;padding-left:26px;padding-right:26px}
+
+  /* ---- Reveal on scroll ---- */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}
+  .reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 
   /* ---- Nav ---- */
-  header.nav{
-    position:sticky;top:0;z-index:50;
-    backdrop-filter:blur(10px);
-    background:rgba(22,10,36,0.6);
-    border-bottom:1px solid var(--card-border);
-  }
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:66px}
-  .brand{font-family:Georgia,serif;font-size:1.4rem;letter-spacing:3px;color:var(--gold)}
+  header.nav{position:sticky;top:0;z-index:60;backdrop-filter:blur(10px);
+    background:rgba(22,10,36,0.62);border-bottom:1px solid var(--card-border)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{font-family:Georgia,serif;font-size:1.4rem;letter-spacing:3px;color:var(--gold);text-decoration:none}
   .brand span{color:var(--violet-light)}
-  nav ul{list-style:none;display:flex;gap:28px}
-  nav a{color:var(--text-dim);text-decoration:none;font-size:.92rem;letter-spacing:1px;transition:color .25s}
+  nav ul{list-style:none;display:flex;gap:26px;align-items:center}
+  nav a{color:var(--text-dim);text-decoration:none;font-size:.9rem;letter-spacing:1px;transition:color .25s}
   nav a:hover{color:var(--gold)}
+  .nav-cta{background:linear-gradient(120deg,var(--violet-light),var(--violet));color:#fff!important;
+    padding:9px 18px;border-radius:30px;font-size:.82rem}
   .nav-toggle{display:none;background:none;border:0;color:var(--text);font-size:1.6rem;cursor:pointer}
 
-  /* ---- Hero (full-bleed banner as background) ---- */
-  .hero{
-    position:relative;width:100%;padding:0;
-    height:clamp(360px, 52vh, 470px);
-    background:url('assets/hero.jpg') center 35% / cover no-repeat;
-    display:flex;align-items:flex-end;justify-content:center;
-  }
-  .hero::after{
-    content:"";position:absolute;left:0;right:0;bottom:0;height:48%;pointer-events:none;
-    background:linear-gradient(to top, rgba(22,10,36,.94), rgba(22,10,36,.35) 55%, transparent);
-  }
-  .hero-cta{
-    position:relative;z-index:2;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;
-    padding-bottom:7%;
-  }
-  .hero .btn{width:auto}
-  .intro{text-align:center;max-width:760px;margin:0 auto}
-  .intro .lead{color:var(--text);font-size:1.28rem;margin-bottom:18px}
-  .intro p{color:var(--text-dim);font-size:1.12rem}
-
-  .btn{
-    display:inline-block;padding:14px 30px;border-radius:40px;
-    font-size:.95rem;letter-spacing:1px;text-decoration:none;cursor:pointer;transition:transform .2s,box-shadow .2s;
-  }
-  .btn-primary{
-    background:linear-gradient(120deg,var(--violet-light),var(--violet));
-    color:#fff;box-shadow:0 8px 24px rgba(106,63,160,.5);
-  }
+  /* ---- Buttons ---- */
+  .btn{display:inline-block;padding:14px 30px;border-radius:40px;font-size:.95rem;letter-spacing:1px;
+    text-decoration:none;cursor:pointer;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden}
+  .btn-primary{background:linear-gradient(120deg,var(--violet-light),var(--violet));color:#fff;
+    box-shadow:0 8px 24px rgba(106,63,160,.5)}
   .btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(106,63,160,.7)}
+  .btn-primary::after{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;
+    background:linear-gradient(120deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg)}
+  .btn-primary:hover::after{animation:shine .8s ease}
+  @keyframes shine{to{left:140%}}
   .btn-ghost{border:1px solid var(--violet-light);color:var(--violet-soft)}
-  .btn-ghost:hover{background:rgba(169,130,230,.12)}
+  .btn-ghost:hover{background:rgba(169,130,230,.14);transform:translateY(-3px)}
+
+  /* ---- Hero ---- */
+  .hero{position:relative;width:100%;height:clamp(360px,52vh,460px);
+    background:url('assets/hero.jpg') center 35% / cover no-repeat;
+    display:flex;align-items:flex-end;justify-content:center}
+  .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:52%;pointer-events:none;
+    background:linear-gradient(to top,rgba(22,10,36,.95),rgba(22,10,36,.35) 55%,transparent)}
+  .hero-cta{position:relative;z-index:2;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;padding-bottom:6%}
+  .hero .btn{width:auto}
+
+  /* ---- Trust badges strip ---- */
+  .badges{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;
+    padding:26px 26px;border-bottom:1px solid var(--card-border)}
+  .badge{display:flex;align-items:center;gap:10px;color:var(--text-dim);font-size:.92rem;
+    background:var(--card);border:1px solid var(--card-border);border-radius:40px;padding:10px 20px}
+  .badge b{color:var(--gold);font-weight:600}
 
   /* ---- Sections ---- */
-  section{padding:110px 0}
-  .section-title{text-align:center;margin-bottom:14px;font-size:2.2rem}
+  section{padding:78px 0}
+  .section-head{text-align:center;max-width:660px;margin:0 auto 52px}
+  .eyebrow{color:var(--gold);letter-spacing:4px;font-size:.75rem;text-transform:uppercase;margin-bottom:14px}
+  .section-title{font-size:2.2rem;line-height:1.2}
   .section-title em{color:var(--violet-light);font-style:italic}
-  .section-sub{text-align:center;color:var(--text-dim);max-width:640px;margin:26px auto 64px}
   .divider{width:60px;height:2px;margin:16px auto 0;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+  .section-sub{color:var(--text-dim);margin-top:22px}
+
+  /* ---- Intro ---- */
+  .intro{text-align:center;max-width:760px;margin:0 auto}
+  .intro .lead{color:var(--text);font-size:1.28rem;margin-bottom:16px}
+  .intro p{color:var(--text-dim);font-size:1.1rem}
 
   /* ---- About ---- */
-  .about{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center}
+  .about{display:grid;grid-template-columns:.85fr 1.15fr;gap:54px;align-items:center}
+  .about-img{position:relative}
   .about-img img{width:100%;border-radius:16px;box-shadow:0 16px 44px rgba(0,0,0,.45)}
-  .about h2{font-size:2.1rem;margin-bottom:12px;text-align:left}
-  .about .role{color:var(--gold);letter-spacing:2px;font-size:.82rem;text-transform:uppercase;margin-bottom:20px}
-  .about p{color:var(--text-dim);margin-bottom:16px}
-  .about .signature{color:var(--gold);font-family:Georgia,serif;font-style:italic;font-size:1.15rem;margin-top:8px}
+  .about-img::after{content:"";position:absolute;inset:-14px;border-radius:24px;z-index:-1;
+    background:radial-gradient(circle,rgba(169,130,230,.45),transparent 70%);filter:blur(14px)}
+  .about h2{font-size:2.1rem;margin-bottom:10px}
+  .about .role{color:var(--gold);letter-spacing:2px;font-size:.8rem;text-transform:uppercase;margin-bottom:20px}
+  .about p{color:var(--text-dim);margin-bottom:15px}
+  .about .signature{color:var(--gold);font-family:Georgia,serif;font-style:italic;font-size:1.15rem;margin-top:6px}
 
   /* ---- Services ---- */
-  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
-  .card{
-    background:var(--card);border:1px solid var(--card-border);border-radius:18px;
-    padding:38px 30px;text-align:center;transition:transform .3s,border-color .3s,box-shadow .3s;
-    backdrop-filter:blur(4px);
-  }
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .card{background:var(--card);border:1px solid var(--card-border);border-radius:18px;padding:34px 28px;
+    text-align:center;transition:transform .3s,border-color .3s,box-shadow .3s;backdrop-filter:blur(4px);
+    display:flex;flex-direction:column}
   .card:hover{transform:translateY(-8px);border-color:var(--violet-light);box-shadow:0 18px 40px rgba(0,0,0,.4)}
-  .card .icon{font-size:2.6rem;margin-bottom:18px;display:block}
-  .card h3{font-size:1.28rem;margin-bottom:12px;color:var(--violet-soft)}
-  .card p{color:var(--text-dim);font-size:.96rem}
+  .card .icon{font-size:2.5rem;margin-bottom:16px}
+  .card h3{font-size:1.24rem;margin-bottom:10px;color:var(--violet-soft)}
+  .card p{color:var(--text-dim);font-size:.95rem;flex-grow:1}
+  .card .card-link{margin-top:18px;color:var(--gold);font-size:.85rem;letter-spacing:1px;text-decoration:none;
+    text-transform:uppercase;transition:color .2s}
+  .card .card-link:hover{color:var(--violet-light)}
 
-  /* ---- Cards showcase strip ---- */
-  .showcase{text-align:center}
-  .showcase img{
-    width:100%;max-width:760px;border-radius:18px;margin:0 auto;
-    box-shadow:0 16px 44px rgba(0,0,0,.45),0 0 0 1px var(--card-border)
-  }
+  /* ---- Messages carousel ---- */
+  .carousel{max-width:520px;margin:0 auto;position:relative}
+  .carousel-viewport{overflow:hidden;border-radius:18px;box-shadow:0 16px 44px rgba(0,0,0,.45),0 0 0 1px var(--card-border)}
+  .carousel-track{display:flex;transition:transform .6s ease}
+  .carousel-track img{min-width:100%}
+  .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;
+    border:1px solid var(--card-border);background:rgba(22,10,36,.7);color:var(--text);font-size:1.2rem;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s;z-index:2}
+  .carousel-btn:hover{background:var(--violet);transform:translateY(-50%) scale(1.08)}
+  .carousel-btn.prev{left:-12px}.carousel-btn.next{right:-12px}
+  .dots{display:flex;gap:10px;justify-content:center;margin-top:20px}
+  .dot{width:10px;height:10px;border-radius:50%;border:0;background:rgba(169,130,230,.35);cursor:pointer;transition:background .2s,transform .2s}
+  .dot.active{background:var(--gold);transform:scale(1.25)}
 
-  /* ---- Contact ---- */
+  /* ---- Process steps ---- */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .step{background:var(--card);border:1px solid var(--card-border);border-radius:18px;padding:36px 28px;text-align:center;position:relative}
+  .step .num{width:52px;height:52px;border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;
+    font-family:Georgia,serif;font-size:1.5rem;color:#fff;background:linear-gradient(120deg,var(--violet-light),var(--violet));
+    box-shadow:0 8px 20px rgba(106,63,160,.5)}
+  .step h3{font-size:1.2rem;margin-bottom:10px;color:var(--violet-soft)}
+  .step p{color:var(--text-dim);font-size:.95rem}
+
+  /* ---- Values ---- */
+  .values{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .value{text-align:center;padding:30px 22px}
+  .value .icon{font-size:2.2rem;margin-bottom:14px}
+  .value h3{font-size:1.15rem;margin-bottom:8px;color:var(--violet-soft)}
+  .value p{color:var(--text-dim);font-size:.94rem}
+
+  /* ---- FAQ ---- */
+  .faq{max-width:760px;margin:0 auto}
+  .faq details{background:var(--card);border:1px solid var(--card-border);border-radius:14px;
+    padding:2px 24px;margin-bottom:14px;transition:border-color .2s}
+  .faq details[open]{border-color:var(--violet-light)}
+  .faq summary{cursor:pointer;list-style:none;padding:20px 0;font-size:1.05rem;color:var(--text);
+    display:flex;justify-content:space-between;align-items:center;gap:16px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";color:var(--gold);font-size:1.4rem;transition:transform .25s}
+  .faq details[open] summary::after{transform:rotate(45deg)}
+  .faq details p{color:var(--text-dim);padding:0 0 22px;font-size:.98rem}
+
+  /* ---- CTA / Contact ---- */
   .contact{text-align:center}
-  .contact .card-box{
-    max-width:640px;margin:0 auto;background:var(--card);border:1px solid var(--card-border);
-    border-radius:22px;padding:56px 40px;backdrop-filter:blur(6px);
-  }
+  .contact .card-box{max-width:660px;margin:0 auto;background:var(--card);border:1px solid var(--card-border);
+    border-radius:22px;padding:56px 40px;backdrop-filter:blur(6px)}
   .contact h2{font-size:2.1rem;margin-bottom:16px}
   .contact p{color:var(--text-dim);margin-bottom:28px}
   .social{display:flex;gap:20px;justify-content:center;margin-top:26px;flex-wrap:wrap}
@@ -158,56 +208,50 @@
   footer .heart{color:var(--violet-light)}
 
   /* ---- Responsive ---- */
-  @media(max-width:960px){
-    .cards{grid-template-columns:repeat(2,1fr)}
-  }
+  @media(max-width:960px){.cards,.steps,.values{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:860px){
-    section{padding:80px 0}
+    section{padding:60px 0}
     .hero{height:auto;aspect-ratio:1024 / 536}
-    .about{grid-template-columns:1fr;gap:34px}
-    .about h2{text-align:center}
-    .about .role{text-align:center}
+    .about{grid-template-columns:1fr;gap:32px}
     .about-img{max-width:320px;margin:0 auto}
-    nav ul{
-      position:absolute;top:66px;right:0;left:0;flex-direction:column;gap:0;
-      background:rgba(22,10,36,.97);border-bottom:1px solid var(--card-border);
-      max-height:0;overflow:hidden;transition:max-height .3s
-    }
-    nav ul.open{max-height:340px}
-    nav a{display:block;padding:16px 24px;border-top:1px solid rgba(169,130,230,.12)}
+    .about h2,.about .role{text-align:center}
+    nav ul{position:absolute;top:68px;right:0;left:0;flex-direction:column;gap:0;
+      background:rgba(22,10,36,.97);border-bottom:1px solid var(--card-border);max-height:0;overflow:hidden;transition:max-height .3s}
+    nav ul.open{max-height:420px}
+    nav a{display:block;padding:15px 24px;border-top:1px solid rgba(169,130,230,.12);width:100%}
+    .nav-cta{margin:12px 24px;text-align:center}
     .nav-toggle{display:block}
   }
   @media(max-width:600px){
     .wrap{padding-left:20px;padding-right:20px}
-    section{padding:64px 0}
-    .hero-cta{padding-bottom:6%}
-    .hero-cta .btn{padding:11px 20px;font-size:.85rem}
-    .intro .lead{font-size:1.1rem}
-    .intro p{font-size:1rem}
-    .cards{grid-template-columns:1fr}
+    section{padding:52px 0}
+    .cards,.steps,.values{grid-template-columns:1fr}
     .section-title{font-size:1.8rem}
+    .intro .lead{font-size:1.12rem}
+    .hero-cta .btn{padding:11px 20px;font-size:.85rem}
     .contact .card-box{padding:40px 26px}
-    .btn{display:block;width:100%;text-align:center}
+    .carousel-btn.prev{left:4px}.carousel-btn.next{right:4px}
   }
-  @media(max-width:380px){
-    .wrap{padding-left:16px;padding-right:16px}
-    .brand{font-size:1.2rem;letter-spacing:2px}
-  }
+  @media(max-width:380px){.wrap{padding-left:16px;padding-right:16px}.brand{font-size:1.2rem;letter-spacing:2px}}
 </style>
 </head>
 <body>
 <div class="stars-bg"></div>
+<div class="orbs"><span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span></div>
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 
 <header class="nav">
   <div class="wrap nav-inner">
-    <div class="brand">ÍNDIGO<span>✦</span></div>
+    <a href="#inicio" class="brand">ÍNDIGO<span>✦</span></a>
     <nav>
       <button class="nav-toggle" aria-label="Menú" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
       <ul id="menu">
         <li><a href="#inicio" onclick="closeMenu()">Inicio</a></li>
         <li><a href="#sobre-mi" onclick="closeMenu()">Sobre mí</a></li>
         <li><a href="#servicios" onclick="closeMenu()">Servicios</a></li>
-        <li><a href="#contacto" onclick="closeMenu()">Contacto</a></li>
+        <li><a href="#proceso" onclick="closeMenu()">Proceso</a></li>
+        <li><a href="#faq" onclick="closeMenu()">Preguntas</a></li>
+        <li><a href="https://www.instagram.com/indigonicki/" target="_blank" rel="noopener" class="nav-cta" onclick="closeMenu()">Reservar</a></li>
       </ul>
     </nav>
   </div>
@@ -221,85 +265,162 @@
   </div>
 </section>
 
+<!-- TRUST BADGES -->
+<div class="badges">
+  <span class="badge reveal">🌙 <b>Espacio seguro</b></span>
+  <span class="badge reveal d1">💜 <b>Escucha sin juicios</b></span>
+  <span class="badge reveal d2">✨ <b>Acompañamiento personalizado</b></span>
+  <span class="badge reveal d3">📩 <b>Reservás por Instagram</b></span>
+</div>
+
 <!-- INTRO -->
 <section class="wrap intro">
-  <p class="lead">Un espacio para quienes buscan respuestas, claridad y sanación.</p>
-  <p>A través del tarot, la lectura energética y el Reiki, acompaño procesos de transformación y despertar interior. A veces el alma necesita una señal, una guía… o simplemente alguien que traduzca lo que sentís.</p>
+  <p class="eyebrow reveal">Bienvenida/o a Índigo</p>
+  <p class="lead reveal d1">Un espacio para quienes buscan respuestas, claridad y sanación.</p>
+  <p class="reveal d2">A través del tarot, la lectura energética y el Reiki, acompaño procesos de transformación y despertar interior. A veces el alma necesita una señal, una guía… o simplemente alguien que traduzca lo que sentís.</p>
 </section>
 
 <!-- SOBRE MÍ -->
 <section id="sobre-mi" class="wrap">
   <div class="about">
-    <div class="about-img">
-      <img src="assets/img1.jpg" alt="Nicolle · Índigo">
-    </div>
+    <div class="about-img reveal"><img src="assets/img1.jpg" alt="Nicolle · Índigo"></div>
     <div>
-      <h2>Soy <span style="color:var(--violet-light)">Nicolle</span> 🤍</h2>
-      <p class="role">Tarotista · Reikista · Terapeuta energética</p>
-      <p>Este espacio también es parte de mi propio camino. Siempre sentí una conexión profunda con lo invisible: los mensajes, las señales, la energía y todo lo que no siempre puede explicarse con palabras.</p>
-      <p>Como <strong>reikista</strong>, canalizo energía de sanación para acompañarte a soltar lo que pesa y reencontrar tu equilibrio. Creo profundamente en volver a uno mismo, en comprender lo que duele y en transformar lo que ya no suma.</p>
-      <p>Muchas veces no necesitamos más respuestas afuera, sino aprender a escuchar lo que el alma expresa. Hoy elijo abrir este espacio para acompañar a otros en esos procesos.</p>
-      <p class="signature">Con amor, Nicolle 🕊️ 🧚‍♀️💜</p>
+      <h2 class="reveal">Soy <span style="color:var(--violet-light)">Nicolle</span> 🤍</h2>
+      <p class="role reveal d1">Tarotista · Reikista · Terapeuta energética</p>
+      <p class="reveal d1">Este espacio también es parte de mi propio camino. Siempre sentí una conexión profunda con lo invisible: los mensajes, las señales, la energía y todo lo que no siempre puede explicarse con palabras.</p>
+      <p class="reveal d2">Como <strong>reikista</strong>, canalizo energía de sanación para acompañarte a soltar lo que pesa y reencontrar tu equilibrio. Creo profundamente en volver a uno mismo, en comprender lo que duele y en transformar lo que ya no suma.</p>
+      <p class="reveal d3">Muchas veces no necesitamos más respuestas afuera, sino aprender a escuchar lo que el alma expresa. Hoy elijo abrir este espacio para acompañar a otros en esos procesos.</p>
+      <p class="signature reveal d3">Con amor, Nicolle 🕊️ 🧚‍♀️💜</p>
     </div>
   </div>
 </section>
 
 <!-- SERVICIOS -->
 <section id="servicios" class="wrap">
-  <h2 class="section-title serif">Servicios &amp; <em>terapias</em></h2>
-  <div class="divider"></div>
-  <p class="section-sub">Herramientas para reconectar con vos, comprender lo que sentís y transformar lo que pesa. Cada sesión es un encuentro personalizado y respetuoso de tu proceso.</p>
+  <div class="section-head">
+    <p class="eyebrow reveal">Servicios &amp; terapias</p>
+    <h2 class="section-title serif reveal d1">Herramientas para <em>sanar</em></h2>
+    <div class="divider reveal d1"></div>
+    <p class="section-sub reveal d2">Cada sesión es un encuentro personalizado y respetuoso de tu proceso. Elegimos juntas/os la herramienta que más resuena con vos.</p>
+  </div>
   <div class="cards">
-    <div class="card">
-      <span class="icon">🔮</span>
-      <h3>Tarot evolutivo</h3>
-      <p>Más que predecir, el tarot evolutivo te muestra el aprendizaje detrás de cada situación. Ganás claridad sobre tus vínculos, decisiones y el camino a recorrer, desde la conciencia y la libertad.</p>
+    <div class="card reveal">
+      <span class="icon">🔮</span><h3>Tarot evolutivo</h3>
+      <p>Más que predecir, te muestra el aprendizaje detrás de cada situación. Claridad sobre tus vínculos, decisiones y el camino a recorrer, desde la conciencia y la libertad.</p>
+      <a href="#contacto" class="card-link">Reservar →</a>
     </div>
-    <div class="card">
-      <span class="icon">🌟</span>
-      <h3>Lectura de oráculo</h3>
-      <p>Mensajes canalizados a través de las cartas para escuchar lo que tu alma necesita recordar. Una guía amorosa para cuando buscás una señal o una dirección clara.</p>
+    <div class="card reveal d1">
+      <span class="icon">🌟</span><h3>Lectura de oráculo</h3>
+      <p>Mensajes canalizados a través de las cartas para escuchar lo que tu alma necesita recordar. Una guía amorosa para cuando buscás una señal o una dirección.</p>
+      <a href="#contacto" class="card-link">Reservar →</a>
     </div>
-    <div class="card">
-      <span class="icon">🕯️</span>
-      <h3>Velomancia</h3>
+    <div class="card reveal d2">
+      <span class="icon">🕯️</span><h3>Velomancia</h3>
       <p>El arte de leer la llama, la cera y el humo de la vela. Un ritual revelador que muestra qué energías te rodean y qué se está moviendo dentro de tu proceso.</p>
+      <a href="#contacto" class="card-link">Reservar →</a>
     </div>
-    <div class="card">
-      <span class="icon">🙌</span>
-      <h3>Reiki</h3>
-      <p>Energía de sanación universal canalizada a través de las manos. El Reiki armoniza cuerpo, mente y emociones, alivia el estrés y reactiva tu equilibrio natural.</p>
+    <div class="card reveal">
+      <span class="icon">🙌</span><h3>Reiki</h3>
+      <p>Energía de sanación universal canalizada a través de las manos. Armoniza cuerpo, mente y emociones, alivia el estrés y reactiva tu equilibrio natural.</p>
+      <a href="#contacto" class="card-link">Reservar →</a>
     </div>
-    <div class="card">
-      <span class="icon">🌿</span>
-      <h3>Limpiezas energéticas</h3>
+    <div class="card reveal d1">
+      <span class="icon">🌿</span><h3>Limpiezas energéticas</h3>
       <p>Liberá cargas, bloqueos y energías densas que no te pertenecen. Armonizo tu campo energético para que vuelvas a sentirte liviana/o, protegida/o y en tu centro.</p>
+      <a href="#contacto" class="card-link">Reservar →</a>
     </div>
-    <div class="card">
-      <span class="icon">✨</span>
-      <h3>Rituales &amp; manifestación</h3>
+    <div class="card reveal d2">
+      <span class="icon">✨</span><h3>Rituales &amp; manifestación</h3>
       <p>Rituales personalizados para sanar heridas del pasado, cerrar ciclos y manifestar aquello que deseás crear. Herramientas concretas para acompañar tu intención.</p>
+      <a href="#contacto" class="card-link">Reservar →</a>
     </div>
   </div>
 </section>
 
-<!-- SHOWCASE -->
-<section class="wrap showcase">
-  <h2 class="section-title serif">Elegí una <em>carta</em></h2>
-  <div class="divider"></div>
-  <p class="section-sub">Cada mensaje llega en el momento justo. Si llegaste hasta acá… no es casualidad.</p>
-  <img src="assets/img5.jpg" alt="Elegí una carta y descubrí tu mensaje">
+<!-- MENSAJES CANALIZADOS -->
+<section class="wrap">
+  <div class="section-head">
+    <p class="eyebrow reveal">Mensajes canalizados</p>
+    <h2 class="section-title serif reveal d1">Elegí una <em>carta</em></h2>
+    <div class="divider reveal d1"></div>
+    <p class="section-sub reveal d2">Cada mensaje llega en el momento justo. Si llegaste hasta acá… no es casualidad.</p>
+  </div>
+  <div class="carousel reveal d2">
+    <div class="carousel-viewport">
+      <div class="carousel-track" id="track">
+        <img src="assets/img2.jpg" alt="Mensaje canalizado 1">
+        <img src="assets/img3.jpg" alt="Mensaje canalizado 2">
+        <img src="assets/img4.jpg" alt="Mensaje canalizado 3">
+        <img src="assets/img5.jpg" alt="Elegí una carta y descubrí tu mensaje">
+      </div>
+    </div>
+    <button class="carousel-btn prev" aria-label="Anterior" onclick="move(-1)">‹</button>
+    <button class="carousel-btn next" aria-label="Siguiente" onclick="move(1)">›</button>
+    <div class="dots" id="dots"></div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section id="proceso" class="wrap">
+  <div class="section-head">
+    <p class="eyebrow reveal">Cómo es el proceso</p>
+    <h2 class="section-title serif reveal d1">Tu camino, <em>paso a paso</em></h2>
+    <div class="divider reveal d1"></div>
+    <p class="section-sub reveal d2">Simple, cercano y a tu ritmo. Todo empieza con un mensaje.</p>
+  </div>
+  <div class="steps">
+    <div class="step reveal">
+      <div class="num">1</div><h3>Escribís por Instagram</h3>
+      <p>Me contás qué estás buscando o qué te moviliza. No hace falta que sepas nada de antemano.</p>
+    </div>
+    <div class="step reveal d1">
+      <div class="num">2</div><h3>Elegimos tu sesión</h3>
+      <p>Vemos juntas/os qué herramienta resuena: tarot, Reiki, lectura energética, oráculo o un ritual.</p>
+    </div>
+    <div class="step reveal d2">
+      <div class="num">3</div><h3>Vivís tu proceso</h3>
+      <p>Te acompaño con la lectura o la terapia y con herramientas concretas para tu camino de sanación.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VALORES -->
+<section class="wrap">
+  <div class="section-head">
+    <p class="eyebrow reveal">Por qué Índigo</p>
+    <h2 class="section-title serif reveal d1">Un espacio <em>distinto</em></h2>
+    <div class="divider reveal d1"></div>
+  </div>
+  <div class="values">
+    <div class="value reveal"><span class="icon">🕊️</span><h3>Escucha sin juicios</h3><p>Un lugar donde podés mostrarte tal como estás, sin miedo y sin máscaras.</p></div>
+    <div class="value reveal d1"><span class="icon">🌙</span><h3>Desde el alma</h3><p>No busco darte más respuestas afuera, sino ayudarte a escuchar lo que ya sabés adentro.</p></div>
+    <div class="value reveal d2"><span class="icon">💜</span><h3>Acompañamiento real</h3><p>Cada proceso es único. Te acompaño con respeto, presencia y amor en cada paso.</p></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="wrap">
+  <div class="section-head">
+    <p class="eyebrow reveal">Preguntas frecuentes</p>
+    <h2 class="section-title serif reveal d1">Antes de <em>empezar</em></h2>
+    <div class="divider reveal d1"></div>
+  </div>
+  <div class="faq reveal d2">
+    <details><summary>¿Cómo reservo una sesión?</summary><p>Por mensaje directo en Instagram <a href="https://www.instagram.com/indigonicki/" target="_blank" rel="noopener" style="color:var(--gold)">@indigonicki</a>. Escribime, me contás qué buscás y coordinamos los detalles de tu encuentro.</p></details>
+    <details><summary>¿Necesito saber algo antes de mi sesión?</summary><p>No hace falta. Venís con tu intención o tu pregunta y el resto surge en el encuentro. Mi trabajo es acompañarte a poner en palabras lo que sentís.</p></details>
+    <details><summary>¿Qué diferencia hay entre el tarot y el Reiki?</summary><p>El tarot y el oráculo te dan claridad y guía a través de los mensajes de las cartas. El Reiki es una terapia energética: trabaja tu energía para aliviar, equilibrar y sanar. Si no sabés cuál elegir, lo vemos juntas/os al escribirme.</p></details>
+    <details><summary>¿Cuánto dura y cuál es el valor de cada sesión?</summary><p>Depende de la sesión que elijas. Escribime por Instagram y te cuento las opciones y modalidades disponibles en este momento.</p></details>
+    <details><summary>¿Puedo hacer una limpieza o ritual si no sé bien qué necesito?</summary><p>Sí. Muchas veces solo sabemos que algo pesa. En ese caso empezamos con una lectura para ver qué se está moviendo y desde ahí elegimos el camino.</p></details>
+  </div>
 </section>
 
 <!-- CONTACTO -->
 <section id="contacto" class="wrap contact">
-  <div class="card-box">
+  <div class="card-box reveal">
     <h2 class="serif">✨ Tu <span style="color:var(--violet-light)">despertar</span> ✨</h2>
     <p>Si esto resuena con vos, podés reservar tu sesión por mensaje directo. Escribime y empezamos tu proceso.</p>
     <a href="https://www.instagram.com/indigonicki/" target="_blank" rel="noopener" class="btn btn-primary">📩 Reservar por Instagram</a>
-    <div class="social">
-      <a href="https://www.instagram.com/indigonicki/" target="_blank" rel="noopener">Instagram · @indigonicki</a>
-    </div>
+    <div class="social"><a href="https://www.instagram.com/indigonicki/" target="_blank" rel="noopener">Instagram · @indigonicki</a></div>
   </div>
 </section>
 
@@ -310,6 +431,30 @@
 
 <script>
   function closeMenu(){document.getElementById('menu').classList.remove('open')}
+
+  /* Reveal on scroll */
+  (function(){
+    var els=document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+    },{threshold:.15});
+    els.forEach(function(e){io.observe(e);});
+  })();
+
+  /* Messages carousel */
+  (function(){
+    var track=document.getElementById('track'); if(!track)return;
+    var slides=track.children.length, i=0;
+    var dots=document.getElementById('dots');
+    for(var d=0;d<slides;d++){(function(idx){var b=document.createElement('button');b.className='dot'+(idx===0?' active':'');
+      b.setAttribute('aria-label','Ir a la carta '+(idx+1));b.onclick=function(){go(idx);};dots.appendChild(b);})(d);}
+    window.move=function(dir){go((i+dir+slides)%slides);};
+    function go(n){i=n;track.style.transform='translateX(-'+(i*100)+'%)';
+      var ds=dots.children;for(var k=0;k<ds.length;k++)ds[k].classList.toggle('active',k===i);}
+    var timer=setInterval(function(){window.move(1);},5500);
+    track.parentElement.addEventListener('mouseenter',function(){clearInterval(timer);});
+  })();
 </script>
 </body>
 </html>
