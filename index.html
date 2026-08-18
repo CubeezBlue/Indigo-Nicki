@@ -227,8 +227,9 @@
     .about h2,.about .role{text-align:center}
     nav ul{position:absolute;top:68px;right:0;left:0;flex-direction:column;gap:0;background:rgba(22,10,36,.97);border-bottom:1px solid var(--card-border);max-height:0;overflow:hidden;transition:max-height .3s}
     nav ul.open{max-height:420px}
+    nav ul{text-align:center}
     nav a{display:block;padding:15px 24px;border-top:1px solid rgba(169,130,230,.12);width:100%}
-    .nav-cta{margin:12px 24px;text-align:center}
+    .nav-cta{display:inline-block;width:auto;margin:14px auto;padding:11px 30px}
     .nav-toggle{display:block}
   }
   @media(max-width:768px){
@@ -236,14 +237,14 @@
     .hero-bg{background-image:url('assets/hero-mobile.jpg')}
     .hero{align-items:flex-end}
     .hero::before{background:linear-gradient(to top,rgba(22,10,36,.95) 26%,rgba(22,10,36,.72) 50%,rgba(22,10,36,.2) 72%,transparent 88%)}
-    .hero-content{padding-bottom:15vh}
+    .hero-content{padding-bottom:16vh}
   }
   @media(max-width:600px){
     .wrap{padding-left:20px;padding-right:20px}
     .sec{padding:52px 0}
     .cards,.scards,.steps,.values{grid-template-columns:1fr}
     .section-title{font-size:2.2rem}
-    .hero-content{padding-bottom:9vh}
+    .hero-content{padding-bottom:16vh}
     .hero-content .desc{font-size:1.02rem;margin-bottom:22px}
     .hero-badges{gap:8px 18px;margin-top:22px}
     .hero-cta .btn{padding:11px 20px;font-size:.85rem}
