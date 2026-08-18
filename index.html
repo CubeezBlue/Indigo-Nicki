@@ -105,6 +105,11 @@
   .hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
     background:linear-gradient(to top,rgba(22,10,36,.96) 6%,rgba(22,10,36,.62) 32%,rgba(22,10,36,.2) 58%,transparent 80%)}
   .hero-content{position:relative;z-index:2;max-width:760px;padding:0 24px 8vh;text-shadow:0 2px 22px rgba(0,0,0,.65)}
+  .hero-welcome{font-family:var(--elegant);font-weight:600;color:var(--gold);font-size:2.5rem;letter-spacing:3px;margin-bottom:16px;line-height:1.1}
+  .hero-welcome .tw{display:inline-block;color:#f6e2b4;margin:0 10px;animation:twk 2.6s ease-in-out infinite}
+  .hero-welcome .tw.b{animation-delay:1.3s}
+  @keyframes twk{0%,100%{opacity:.35;transform:scale(.8)}50%{opacity:1;transform:scale(1.2)}}
+  @media(prefers-reduced-motion:reduce){.hero-welcome .tw{animation:none}}
   .hero-content .desc{color:var(--text);font-size:1.18rem;line-height:1.7;max-width:640px;margin:0 auto 30px}
   .hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
   .hero-cta .btn{width:auto}
@@ -245,6 +250,7 @@
     .cards,.scards,.steps,.values{grid-template-columns:1fr}
     .section-title{font-size:2.2rem}
     .hero-content{padding-bottom:16vh}
+    .hero-welcome{font-size:1.85rem;margin-bottom:12px}
     .hero-content .desc{font-size:1.02rem;margin-bottom:22px}
     .hero-badges{gap:8px 18px;margin-top:22px}
     .hero-cta .btn{padding:11px 20px;font-size:.85rem}
@@ -281,6 +287,7 @@
 <section id="inicio" class="hero" aria-label="Índigo Nicki · Un espacio para sanar">
   <div class="hero-bg"></div>
   <div class="hero-content">
+    <p class="hero-welcome"><span class="tw">✦</span>Bienvenidos<span class="tw b">✦</span></p>
     <p class="desc">A través del tarot, la lectura energética y el Reiki, acompaño procesos de transformación y despertar interior. A veces el alma necesita una señal, una guía… o simplemente alguien que traduzca lo que sentís.</p>
     <div class="hero-cta">
       <a href="#contacto" class="btn btn-primary">Reservá tu sesión</a>
