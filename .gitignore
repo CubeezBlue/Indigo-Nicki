@@ -3,3 +3,11 @@
 
 # Imagen original de Gemini (ya copiada a assets/hero.jpg)
 Gemini_*.jpg
+
+# Imagenes fuente de servicios (copiadas a assets/svc-*)
+Lectura de*
+Limpiezas*
+Reiki.*
+Rituales *
+Velomancia.*
+new-hero.jpg

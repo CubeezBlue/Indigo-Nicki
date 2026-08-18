@@ -94,16 +94,18 @@
   .btn-ghost{border:1px solid var(--violet-light);color:var(--violet-soft)}
   .btn-ghost:hover{background:rgba(169,130,230,.14);transform:translateY(-3px)}
 
-  /* ---- Hero (pantalla completa, contenido sobre la imagen) ---- */
+  /* ---- Hero (pantalla completa, fondo con zoom suave, contenido superpuesto) ---- */
   .hero{position:relative;width:100%;min-height:calc(100vh - 68px);min-height:calc(100svh - 68px);
-    background:url('assets/hero.jpg') center center / cover no-repeat;
     display:flex;align-items:flex-end;justify-content:center;text-align:center;overflow:hidden}
-  .hero::before{content:"";position:absolute;inset:0;pointer-events:none;
-    background:linear-gradient(to top,rgba(22,10,36,.95) 4%,rgba(22,10,36,.5) 34%,rgba(22,10,36,.12) 60%,transparent 80%)}
-  .hero-content{position:relative;z-index:2;max-width:800px;padding:0 24px 7vh;text-shadow:0 2px 18px rgba(0,0,0,.55)}
-  .hero-content .eyebrow{color:var(--gold);letter-spacing:4px;font-size:.78rem;text-transform:uppercase;margin-bottom:16px}
-  .hero-content .lead{font-family:var(--elegant);font-weight:600;font-size:2rem;line-height:1.32;margin-bottom:14px}
-  .hero-content .desc{color:var(--text-dim);font-size:1.08rem;max-width:660px;margin:0 auto 28px}
+  .hero-bg{position:absolute;inset:-3%;z-index:0;
+    background:url('assets/new-hero.jpg') center center / cover no-repeat;
+    animation:kenburns 26s ease-in-out infinite alternate;will-change:transform}
+  @keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.09)}}
+  @media(prefers-reduced-motion:reduce){.hero-bg{animation:none}}
+  .hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:linear-gradient(to top,rgba(22,10,36,.96) 6%,rgba(22,10,36,.62) 32%,rgba(22,10,36,.2) 58%,transparent 80%)}
+  .hero-content{position:relative;z-index:2;max-width:760px;padding:0 24px 8vh;text-shadow:0 2px 22px rgba(0,0,0,.65)}
+  .hero-content .desc{color:var(--text);font-size:1.18rem;line-height:1.7;max-width:640px;margin:0 auto 30px}
   .hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
   .hero-cta .btn{width:auto}
   .hero-badges{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-top:30px}
@@ -159,6 +161,24 @@
   .card .card-link{margin-top:18px;color:var(--gold);font-size:.82rem;letter-spacing:1px;text-decoration:none;text-transform:uppercase;transition:color .2s}
   .card .card-link:hover{color:var(--violet-light)}
 
+  /* ---- Services with image (estilo tarjeta con foto) ---- */
+  .scards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .scard{background:rgba(30,15,50,0.72);border:1px solid var(--card-border);border-radius:18px;overflow:hidden;
+    display:flex;flex-direction:column;transition:transform .3s,border-color .3s,box-shadow .3s}
+  .scard:hover{transform:translateY(-8px);border-color:var(--violet-light);box-shadow:0 20px 44px rgba(0,0,0,.5)}
+  .scard-media{position:relative;aspect-ratio:16/10;overflow:hidden}
+  .scard-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+  .scard:hover .scard-media img{transform:scale(1.07)}
+  .scard-media::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(24,12,40,.85),rgba(24,12,40,.1) 60%)}
+  .scard-badge{position:absolute;right:18px;bottom:-24px;width:54px;height:54px;border-radius:50%;z-index:2;
+    display:flex;align-items:center;justify-content:center;font-size:1.5rem;
+    background:linear-gradient(135deg,#f3ddad,#d4a463);box-shadow:0 8px 20px rgba(0,0,0,.45),0 0 0 4px rgba(30,15,50,.72)}
+  .scard-body{padding:32px 26px 30px;display:flex;flex-direction:column;flex-grow:1}
+  .scard-body h3{font-family:var(--elegant);font-weight:600;font-size:1.5rem;letter-spacing:.5px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+  .scard-body p{color:var(--text-dim);font-size:.95rem;flex-grow:1}
+  .scard-link{margin-top:20px;color:var(--gold);font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:color .2s,letter-spacing .2s}
+  .scard-link:hover{color:var(--violet-light);letter-spacing:2.5px}
+
   /* ---- Messages carousel ---- */
   .carousel{max-width:520px;margin:0 auto;position:relative}
   .carousel-viewport{overflow:hidden;border-radius:18px;box-shadow:0 16px 44px rgba(0,0,0,.45),0 0 0 1px var(--card-border)}
@@ -199,7 +219,7 @@
   footer .heart{color:var(--violet-light)}
 
   /* ---- Responsive ---- */
-  @media(max-width:960px){.cards,.steps,.values{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:960px){.cards,.scards,.steps,.values{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:860px){
     .sec{padding:60px 0}
     .about{grid-template-columns:1fr;gap:32px}
@@ -214,11 +234,10 @@
   @media(max-width:600px){
     .wrap{padding-left:20px;padding-right:20px}
     .sec{padding:52px 0}
-    .cards,.steps,.values{grid-template-columns:1fr}
+    .cards,.scards,.steps,.values{grid-template-columns:1fr}
     .section-title{font-size:2.2rem}
     .hero-content{padding-bottom:9vh}
-    .hero-content .lead{font-size:1.5rem}
-    .hero-content .desc{font-size:1rem;margin-bottom:22px}
+    .hero-content .desc{font-size:1.02rem;margin-bottom:22px}
     .hero-badges{gap:8px 18px;margin-top:22px}
     .hero-cta .btn{padding:11px 20px;font-size:.85rem}
     .contact .card-box{padding:40px 26px}
@@ -252,9 +271,8 @@
 
 <!-- HERO -->
 <section id="inicio" class="hero" aria-label="Índigo Nicki · Un espacio para sanar">
+  <div class="hero-bg"></div>
   <div class="hero-content">
-    <p class="eyebrow">Bienvenida/o a Índigo</p>
-    <p class="lead">Un espacio para quienes buscan respuestas, claridad y sanación.</p>
     <p class="desc">A través del tarot, la lectura energética y el Reiki, acompaño procesos de transformación y despertar interior. A veces el alma necesita una señal, una guía… o simplemente alguien que traduzca lo que sentís.</p>
     <div class="hero-cta">
       <a href="#contacto" class="btn btn-primary">Reservá tu sesión</a>
@@ -300,36 +318,54 @@
       <div class="divider reveal d1"></div>
       <p class="section-sub reveal d2">Cada sesión es un encuentro personalizado y respetuoso de tu proceso. Elegimos juntas/os la herramienta que más resuena con vos.</p>
     </div>
-    <div class="cards">
-      <div class="card reveal">
-        <span class="icon">🔮</span><h3>Tarot evolutivo</h3>
-        <p>Más que predecir, te muestra el aprendizaje detrás de cada situación. Claridad sobre tus vínculos, decisiones y el camino a recorrer, desde la conciencia y la libertad.</p>
-        <a href="#contacto" class="card-link">Reservar →</a>
+    <div class="scards">
+      <div class="scard reveal">
+        <div class="scard-media"><img src="assets/img5.jpg" alt="Tarot evolutivo"><span class="scard-badge">🔮</span></div>
+        <div class="scard-body">
+          <h3>Tarot evolutivo</h3>
+          <p>Más que predecir, te muestra el aprendizaje detrás de cada situación. Claridad sobre tus vínculos, decisiones y el camino a recorrer, desde la conciencia y la libertad.</p>
+          <a href="#contacto" class="scard-link">¡Consultá aquí! →</a>
+        </div>
       </div>
-      <div class="card reveal d1">
-        <span class="icon">🌟</span><h3>Lectura de oráculo</h3>
-        <p>Mensajes canalizados a través de las cartas para escuchar lo que tu alma necesita recordar. Una guía amorosa para cuando buscás una señal o una dirección.</p>
-        <a href="#contacto" class="card-link">Reservar →</a>
+      <div class="scard reveal d1">
+        <div class="scard-media"><img src="assets/svc-oraculo.webp" alt="Lectura de oráculo"><span class="scard-badge">🌟</span></div>
+        <div class="scard-body">
+          <h3>Lectura de oráculo</h3>
+          <p>Mensajes canalizados a través de las cartas para escuchar lo que tu alma necesita recordar. Una guía amorosa para cuando buscás una señal o una dirección.</p>
+          <a href="#contacto" class="scard-link">¡Consultá aquí! →</a>
+        </div>
       </div>
-      <div class="card reveal d2">
-        <span class="icon">🕯️</span><h3>Velomancia</h3>
-        <p>El arte de leer la llama, la cera y el humo de la vela. Un ritual revelador que muestra qué energías te rodean y qué se está moviendo dentro de tu proceso.</p>
-        <a href="#contacto" class="card-link">Reservar →</a>
+      <div class="scard reveal d2">
+        <div class="scard-media"><img src="assets/svc-velomancia.jpg" alt="Velomancia"><span class="scard-badge">🕯️</span></div>
+        <div class="scard-body">
+          <h3>Velomancia</h3>
+          <p>El arte de leer la llama, la cera y el humo de la vela. Un ritual revelador que muestra qué energías te rodean y qué se está moviendo dentro de tu proceso.</p>
+          <a href="#contacto" class="scard-link">¡Consultá aquí! →</a>
+        </div>
       </div>
-      <div class="card reveal">
-        <span class="icon">🙌</span><h3>Reiki</h3>
-        <p>Energía de sanación universal canalizada a través de las manos. Armoniza cuerpo, mente y emociones, alivia el estrés y reactiva tu equilibrio natural.</p>
-        <a href="#contacto" class="card-link">Reservar →</a>
+      <div class="scard reveal">
+        <div class="scard-media"><img src="assets/svc-reiki.jpg" alt="Reiki"><span class="scard-badge">🙌</span></div>
+        <div class="scard-body">
+          <h3>Reiki</h3>
+          <p>Energía de sanación universal canalizada a través de las manos. Armoniza cuerpo, mente y emociones, alivia el estrés y reactiva tu equilibrio natural.</p>
+          <a href="#contacto" class="scard-link">¡Consultá aquí! →</a>
+        </div>
       </div>
-      <div class="card reveal d1">
-        <span class="icon">🌿</span><h3>Limpiezas energéticas</h3>
-        <p>Liberá cargas, bloqueos y energías densas que no te pertenecen. Armonizo tu campo energético para que vuelvas a sentirte liviana/o, protegida/o y en tu centro.</p>
-        <a href="#contacto" class="card-link">Reservar →</a>
+      <div class="scard reveal d1">
+        <div class="scard-media"><img src="assets/svc-limpiezas.jpg" alt="Limpiezas energéticas"><span class="scard-badge">🌿</span></div>
+        <div class="scard-body">
+          <h3>Limpiezas energéticas</h3>
+          <p>Liberá cargas, bloqueos y energías densas que no te pertenecen. Armonizo tu campo energético para que vuelvas a sentirte liviana/o, protegida/o y en tu centro.</p>
+          <a href="#contacto" class="scard-link">¡Consultá aquí! →</a>
+        </div>
       </div>
-      <div class="card reveal d2">
-        <span class="icon">✨</span><h3>Rituales &amp; manifestación</h3>
-        <p>Rituales personalizados para sanar heridas del pasado, cerrar ciclos y manifestar aquello que deseás crear. Herramientas concretas para acompañar tu intención.</p>
-        <a href="#contacto" class="card-link">Reservar →</a>
+      <div class="scard reveal d2">
+        <div class="scard-media"><img src="assets/svc-rituales.jpg" alt="Rituales y manifestación"><span class="scard-badge">✨</span></div>
+        <div class="scard-body">
+          <h3>Rituales &amp; manifestación</h3>
+          <p>Rituales personalizados para sanar heridas del pasado, cerrar ciclos y manifestar aquello que deseás crear. Herramientas concretas para acompañar tu intención.</p>
+          <a href="#contacto" class="scard-link">¡Consultá aquí! →</a>
+        </div>
       </div>
     </div>
   </div>
