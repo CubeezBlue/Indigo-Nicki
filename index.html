@@ -94,11 +94,21 @@
   .btn-ghost{border:1px solid var(--violet-light);color:var(--violet-soft)}
   .btn-ghost:hover{background:rgba(169,130,230,.14);transform:translateY(-3px)}
 
-  /* ---- Hero (imagen completa) ---- */
-  .hero{width:100%;line-height:0;background:#160a24}
-  .hero-img{width:100%;height:auto;display:block}
-  .hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;padding:30px 20px 10px}
+  /* ---- Hero (pantalla completa, contenido sobre la imagen) ---- */
+  .hero{position:relative;width:100%;min-height:calc(100vh - 68px);min-height:calc(100svh - 68px);
+    background:url('assets/hero.jpg') center center / cover no-repeat;
+    display:flex;align-items:flex-end;justify-content:center;text-align:center;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(to top,rgba(22,10,36,.95) 4%,rgba(22,10,36,.5) 34%,rgba(22,10,36,.12) 60%,transparent 80%)}
+  .hero-content{position:relative;z-index:2;max-width:800px;padding:0 24px 7vh;text-shadow:0 2px 18px rgba(0,0,0,.55)}
+  .hero-content .eyebrow{color:var(--gold);letter-spacing:4px;font-size:.78rem;text-transform:uppercase;margin-bottom:16px}
+  .hero-content .lead{font-family:var(--elegant);font-weight:600;font-size:2rem;line-height:1.32;margin-bottom:14px}
+  .hero-content .desc{color:var(--text-dim);font-size:1.08rem;max-width:660px;margin:0 auto 28px}
+  .hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
   .hero-cta .btn{width:auto}
+  .hero-badges{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+  .hero-badges span{color:var(--text-dim);font-size:.86rem;display:flex;align-items:center;gap:8px}
+  .hero-badges b{color:var(--gold);font-weight:600}
 
   /* ---- Moving marquee ---- */
   .marquee{overflow:hidden;white-space:nowrap;padding:16px 0;background:rgba(8,3,16,0.4);
@@ -206,7 +216,10 @@
     .sec{padding:52px 0}
     .cards,.steps,.values{grid-template-columns:1fr}
     .section-title{font-size:2.2rem}
-    .intro .lead{font-size:1.45rem}
+    .hero-content{padding-bottom:9vh}
+    .hero-content .lead{font-size:1.5rem}
+    .hero-content .desc{font-size:1rem;margin-bottom:22px}
+    .hero-badges{gap:8px 18px;margin-top:22px}
     .hero-cta .btn{padding:11px 20px;font-size:.85rem}
     .contact .card-box{padding:40px 26px}
     .marquee-track span{font-size:1.15rem}
@@ -238,13 +251,22 @@
 </header>
 
 <!-- HERO -->
-<section id="inicio" class="hero">
-  <img class="hero-img" src="assets/hero.jpg" alt="Índigo Nicki · Un espacio para sanar — Tarot evolutivo, oráculo, velomancia y limpiezas energéticas">
+<section id="inicio" class="hero" aria-label="Índigo Nicki · Un espacio para sanar">
+  <div class="hero-content">
+    <p class="eyebrow">Bienvenida/o a Índigo</p>
+    <p class="lead">Un espacio para quienes buscan respuestas, claridad y sanación.</p>
+    <p class="desc">A través del tarot, la lectura energética y el Reiki, acompaño procesos de transformación y despertar interior. A veces el alma necesita una señal, una guía… o simplemente alguien que traduzca lo que sentís.</p>
+    <div class="hero-cta">
+      <a href="#contacto" class="btn btn-primary">Reservá tu sesión</a>
+      <a href="#servicios" class="btn btn-ghost">Ver servicios</a>
+    </div>
+    <div class="hero-badges">
+      <span>🌙 <b>Espacio seguro</b></span>
+      <span>💜 <b>Escucha sin juicios</b></span>
+      <span>✨ <b>Acompañamiento personalizado</b></span>
+    </div>
+  </div>
 </section>
-<div class="hero-cta">
-  <a href="#contacto" class="btn btn-primary">Reservá tu sesión</a>
-  <a href="#servicios" class="btn btn-ghost">Ver servicios</a>
-</div>
 
 <!-- MOVING MARQUEE (separator with services) -->
 <div class="marquee">
@@ -253,20 +275,6 @@
     <span>Tarot evolutivo<span class="sep">✦</span>Oráculo<span class="sep">✦</span>Velomancia<span class="sep">✦</span>Reiki<span class="sep">✦</span>Limpiezas energéticas<span class="sep">✦</span>Mensajes canalizados<span class="sep">✦</span>Rituales &amp; manifestación<span class="sep">✦</span></span>
   </div>
 </div>
-
-<!-- INTRO -->
-<section class="sec tint-a">
-  <div class="wrap intro">
-    <p class="eyebrow reveal">Bienvenida/o a Índigo</p>
-    <p class="lead reveal d1">Un espacio para quienes buscan respuestas, claridad y sanación.</p>
-    <p class="reveal d2">A través del tarot, la lectura energética y el Reiki, acompaño procesos de transformación y despertar interior. A veces el alma necesita una señal, una guía… o simplemente alguien que traduzca lo que sentís.</p>
-    <div class="badges reveal d2">
-      <span class="badge">🌙 <b>Espacio seguro</b></span>
-      <span class="badge">💜 <b>Escucha sin juicios</b></span>
-      <span class="badge">✨ <b>Acompañamiento personalizado</b></span>
-    </div>
-  </div>
-</section>
 
 <!-- SOBRE MÍ -->
 <section id="sobre-mi" class="sec">
