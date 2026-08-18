@@ -231,6 +231,13 @@
     .nav-cta{margin:12px 24px;text-align:center}
     .nav-toggle{display:block}
   }
+  @media(max-width:768px){
+    /* Hero vertical optimizado para celular */
+    .hero-bg{background-image:url('assets/hero-mobile.jpg')}
+    .hero{align-items:center}
+    .hero::before{background:radial-gradient(ellipse at 50% 60%, rgba(22,10,36,.74), rgba(22,10,36,.36) 46%, rgba(22,10,36,.1) 72%, transparent)}
+    .hero-content{padding-bottom:0}
+  }
   @media(max-width:600px){
     .wrap{padding-left:20px;padding-right:20px}
     .sec{padding:52px 0}
