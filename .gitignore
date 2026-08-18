@@ -1,13 +1,10 @@
-# Archivos originales de Instagram (ya copiados a assets/ como .jpg)
-*.jfif
-
-# Imagen original de Gemini (ya copiada a assets/hero.jpg)
-Gemini_*.jpg
-
-# Imagenes fuente de servicios (copiadas a assets/svc-*)
-Lectura de*
-Limpiezas*
-Reiki.*
-Rituales *
-Velomancia.*
-new-hero.jpg
+# Archivos fuente en la raiz (ya copiados a assets/). Se ignoran solo en la raiz.
+/*.jfif
+/Gemini_*.jpg
+/Lectura de*
+/Limpiezas*
+/Reiki.*
+/Rituales *
+/Velomancia.*
+/new-hero.jpg
+/tarot.avif
