@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Índigo · Espacio de Sanación</title>
+<meta name="description" content="Índigo · Espacio de sanación. Tarot, lectura energética y rituales para acompañar tu proceso de transformación y despertar interior. Con Nicolle.">
+<style>
+  :root{
+    --bg:#160a24;
+    --bg-2:#1e0f30;
+    --violet:#6a3fa0;
+    --violet-light:#a982e6;
+    --violet-soft:#c9b3f0;
+    --gold:#e9c893;
+    --text:#efe7fb;
+    --text-dim:#c3b3dd;
+    --card:rgba(40,22,66,0.55);
+    --card-border:rgba(169,130,230,0.28);
+    --max:1120px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.7;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.serif{font-family:Georgia,'Times New Roman',serif}
+
+  /* ---- Starry animated background ---- */
+  .stars-bg{
+    position:fixed;inset:0;z-index:-2;
+    background:
+      radial-gradient(circle at 20% 15%, rgba(106,63,160,0.55), transparent 45%),
+      radial-gradient(circle at 85% 25%, rgba(139,90,200,0.35), transparent 40%),
+      radial-gradient(circle at 50% 90%, rgba(80,40,130,0.5), transparent 55%),
+      linear-gradient(160deg,#160a24 0%, #1e0f30 45%, #241141 100%);
+  }
+  .stars-bg::before,.stars-bg::after{
+    content:"";position:absolute;inset:-50%;
+    background-image:
+      radial-gradient(1.5px 1.5px at 20% 30%, #fff, transparent),
+      radial-gradient(1.5px 1.5px at 60% 70%, #fff, transparent),
+      radial-gradient(1px 1px at 40% 50%, #e9c893, transparent),
+      radial-gradient(1.5px 1.5px at 80% 20%, #fff, transparent),
+      radial-gradient(1px 1px at 10% 80%, #c9b3f0, transparent),
+      radial-gradient(1.5px 1.5px at 90% 60%, #fff, transparent),
+      radial-gradient(1px 1px at 33% 15%, #fff, transparent),
+      radial-gradient(1px 1px at 70% 40%, #e9c893, transparent);
+    background-size:400px 400px;
+    opacity:.55;
+    animation:twinkle 6s ease-in-out infinite alternate;
+  }
+  .stars-bg::after{background-size:250px 250px;opacity:.3;animation-delay:2s}
+  @keyframes twinkle{from{opacity:.25}to{opacity:.7}}
+
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+  /* ---- Nav ---- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(10px);
+    background:rgba(22,10,36,0.6);
+    border-bottom:1px solid var(--card-border);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .brand{font-family:Georgia,serif;font-size:1.4rem;letter-spacing:3px;color:var(--gold)}
+  .brand span{color:var(--violet-light)}
+  nav ul{list-style:none;display:flex;gap:28px}
+  nav a{color:var(--text-dim);text-decoration:none;font-size:.92rem;letter-spacing:1px;transition:color .25s}
+  nav a:hover{color:var(--gold)}
+  .nav-toggle{display:none;background:none;border:0;color:var(--text);font-size:1.6rem;cursor:pointer}
+
+  /* ---- Hero ---- */
+  .hero{
+    display:grid;grid-template-columns:1.1fr .9fr;gap:48px;
+    align-items:center;padding:80px 0 90px;
+  }
+  .hero .eyebrow{
+    color:var(--gold);letter-spacing:4px;font-size:.8rem;text-transform:uppercase;margin-bottom:18px
+  }
+  .hero h1{font-size:3.3rem;line-height:1.15;margin-bottom:22px}
+  .hero h1 em{color:var(--violet-light);font-style:italic}
+  .hero p{color:var(--text-dim);font-size:1.08rem;max-width:520px;margin-bottom:32px}
+  .hero-photo{
+    position:relative;justify-self:center;max-width:360px;width:100%;
+  }
+  .hero-photo img{
+    width:100%;border-radius:18px;display:block;
+    box-shadow:0 20px 60px rgba(0,0,0,.5), 0 0 0 1px var(--card-border);
+  }
+  .hero-photo::after{
+    content:"";position:absolute;inset:-16px;border-radius:26px;z-index:-1;
+    background:radial-gradient(circle,rgba(169,130,230,.5),transparent 70%);
+    filter:blur(14px);
+  }
+
+  .btn{
+    display:inline-block;padding:14px 30px;border-radius:40px;
+    font-size:.95rem;letter-spacing:1px;text-decoration:none;cursor:pointer;transition:transform .2s,box-shadow .2s;
+  }
+  .btn-primary{
+    background:linear-gradient(120deg,var(--violet-light),var(--violet));
+    color:#fff;box-shadow:0 8px 24px rgba(106,63,160,.5);
+  }
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(106,63,160,.7)}
+  .btn-ghost{border:1px solid var(--violet-light);color:var(--violet-soft);margin-left:12px}
+  .btn-ghost:hover{background:rgba(169,130,230,.12)}
+
+  /* ---- Sections ---- */
+  section{padding:80px 0}
+  .section-title{text-align:center;margin-bottom:14px;font-size:2.2rem}
+  .section-title em{color:var(--violet-light);font-style:italic}
+  .section-sub{text-align:center;color:var(--text-dim);max-width:620px;margin:0 auto 54px}
+  .divider{width:60px;height:2px;margin:16px auto 0;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+
+  /* ---- About ---- */
+  .about{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center}
+  .about-img{position:relative}
+  .about-img img{width:100%;border-radius:16px;box-shadow:0 16px 44px rgba(0,0,0,.45)}
+  .about h2{font-size:2.1rem;margin-bottom:20px;text-align:left}
+  .about p{color:var(--text-dim);margin-bottom:16px}
+  .about .signature{color:var(--gold);font-family:Georgia,serif;font-style:italic;font-size:1.15rem;margin-top:8px}
+
+  /* ---- Services ---- */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .card{
+    background:var(--card);border:1px solid var(--card-border);border-radius:18px;
+    padding:36px 28px;text-align:center;transition:transform .3s,border-color .3s,box-shadow .3s;
+    backdrop-filter:blur(4px);
+  }
+  .card:hover{transform:translateY(-8px);border-color:var(--violet-light);box-shadow:0 18px 40px rgba(0,0,0,.4)}
+  .card .icon{font-size:2.6rem;margin-bottom:18px;display:block}
+  .card h3{font-size:1.3rem;margin-bottom:12px;color:var(--violet-soft)}
+  .card p{color:var(--text-dim);font-size:.96rem}
+
+  /* ---- Cards showcase strip ---- */
+  .showcase{text-align:center}
+  .showcase img{
+    width:100%;max-width:760px;border-radius:18px;margin:0 auto;
+    box-shadow:0 16px 44px rgba(0,0,0,.45),0 0 0 1px var(--card-border)
+  }
+
+  /* ---- Contact ---- */
+  .contact{text-align:center}
+  .contact .card-box{
+    max-width:640px;margin:0 auto;background:var(--card);border:1px solid var(--card-border);
+    border-radius:22px;padding:56px 40px;backdrop-filter:blur(6px);
+  }
+  .contact h2{font-size:2.1rem;margin-bottom:16px}
+  .contact p{color:var(--text-dim);margin-bottom:28px}
+  .social{display:flex;gap:20px;justify-content:center;margin-top:26px}
+  .social a{color:var(--text-dim);text-decoration:none;font-size:.92rem;transition:color .2s}
+  .social a:hover{color:var(--gold)}
+
+  /* ---- Footer ---- */
+  footer{text-align:center;padding:40px 0;border-top:1px solid var(--card-border);color:var(--text-dim);font-size:.85rem}
+  footer .heart{color:var(--violet-light)}
+
+  /* ---- Responsive ---- */
+  @media(max-width:860px){
+    .hero{grid-template-columns:1fr;text-align:center;padding:56px 0 60px}
+    .hero p{margin-left:auto;margin-right:auto}
+    .hero-photo{order:-1;max-width:300px}
+    .about{grid-template-columns:1fr;gap:32px}
+    .about h2{text-align:center}
+    .about-img{max-width:320px;margin:0 auto}
+    .cards{grid-template-columns:1fr}
+    .hero h1{font-size:2.5rem}
+    nav ul{
+      position:absolute;top:66px;right:0;left:0;flex-direction:column;gap:0;
+      background:rgba(22,10,36,.97);border-bottom:1px solid var(--card-border);
+      max-height:0;overflow:hidden;transition:max-height .3s
+    }
+    nav ul.open{max-height:320px}
+    nav a{display:block;padding:16px 24px;border-top:1px solid rgba(169,130,230,.12)}
+    .nav-toggle{display:block}
+    .btn-ghost{margin-left:0;margin-top:12px}
+  }
+</style>
+</head>
+<body>
+<div class="stars-bg"></div>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <div class="brand">ÍNDIGO<span>✦</span></div>
+    <nav>
+      <button class="nav-toggle" aria-label="Menú" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+      <ul id="menu">
+        <li><a href="#inicio" onclick="closeMenu()">Inicio</a></li>
+        <li><a href="#sobre-mi" onclick="closeMenu()">Sobre mí</a></li>
+        <li><a href="#servicios" onclick="closeMenu()">Servicios</a></li>
+        <li><a href="#contacto" onclick="closeMenu()">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="inicio" class="wrap hero">
+  <div class="hero-text">
+    <p class="eyebrow">✨ Espacio de sanación ✨</p>
+    <h1>Bienvenida/o a <em>Índigo</em></h1>
+    <p>Un espacio para quienes buscan respuestas, claridad y sanación. A través del tarot, la lectura energética y distintos rituales, acompaño procesos de transformación y despertar interior.</p>
+    <p style="margin-bottom:36px">A veces el alma necesita una señal, una guía… o simplemente alguien que traduzca lo que sentís.</p>
+    <a href="#contacto" class="btn btn-primary">Reservá tu sesión</a>
+    <a href="#servicios" class="btn btn-ghost">Ver servicios</a>
+  </div>
+  <div class="hero-photo">
+    <img src="assets/img1.jpg" alt="Nicolle · Índigo, espacio de sanación">
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section id="sobre-mi" class="wrap">
+  <div class="about">
+    <div class="about-img">
+      <img src="assets/img1.jpg" alt="Nicolle">
+    </div>
+    <div>
+      <h2>Soy <span style="color:var(--violet-light)">Nicolle</span> 🤍</h2>
+      <p>Y este espacio también es parte de mi propio camino. Siempre sentí una conexión profunda con lo invisible: los mensajes, las señales, la energía y todo lo que no siempre puede explicarse con palabras.</p>
+      <p>Creo profundamente en sanar… en volver a uno mismo, en comprender lo que duele y en transformar lo que pesa. Creo que muchas veces no necesitamos más respuestas afuera, sino aprender a escuchar lo que el alma expresa.</p>
+      <p>Hoy elijo abrir este espacio para acompañar a otros en esos procesos.</p>
+      <p class="signature">Con amor, Nicolle 🕊️ 🧚‍♀️💜</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios" class="wrap">
+  <h2 class="section-title serif">Acá vas a <em>encontrar</em></h2>
+  <div class="divider"></div>
+  <p class="section-sub" style="margin-top:24px">Herramientas para reconectar con vos, comprender lo que sentís y transformar lo que pesa.</p>
+  <div class="cards">
+    <div class="card">
+      <span class="icon">🔮</span>
+      <h3>Lectura de Tarot</h3>
+      <p>Una guía para navegar la incertidumbre. Claridad ante decisiones, vínculos y caminos que aún no ves con nitidez.</p>
+    </div>
+    <div class="card">
+      <span class="icon">🌿</span>
+      <h3>Terapias energéticas</h3>
+      <p>Lectura y limpieza energética para soltar cargas, equilibrar tu energía y volver a tu centro.</p>
+    </div>
+    <div class="card">
+      <span class="icon">🕯️</span>
+      <h3>Rituales y manifestación</h3>
+      <p>Mensajes canalizados y herramientas para sanar heridas del pasado y manifestar lo que deseás crear.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SHOWCASE -->
+<section class="wrap showcase">
+  <h2 class="section-title serif">Elegí una <em>carta</em></h2>
+  <div class="divider"></div>
+  <p class="section-sub" style="margin-top:24px">Cada mensaje llega en el momento justo. Si llegaste hasta acá… no es casualidad.</p>
+  <img src="assets/img5.jpg" alt="Elegí una carta y descubrí tu mensaje">
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="wrap contact">
+  <div class="card-box">
+    <h2 class="serif">✨ Tu <span style="color:var(--violet-light)">despertar</span> ✨</h2>
+    <p>Si esto resuena con vos, podés reservar tu sesión por mensaje directo. Escribime y empezamos tu proceso.</p>
+    <a href="https://www.instagram.com/indigonicki/" target="_blank" rel="noopener" class="btn btn-primary">📩 Reservar por Instagram</a>
+    <div class="social">
+      <a href="https://www.instagram.com/indigonicki/" target="_blank" rel="noopener">Instagram · @indigonicki</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>ÍNDIGO · Espacio de sanación — Con amor, Nicolle <span class="heart">💜</span></p>
+  <p style="margin-top:8px;opacity:.7">Bienvenida/o a tu despertar ✨</p>
+</footer>
+
+<script>
+  function closeMenu(){document.getElementById('menu').classList.remove('open')}
+</script>
+</body>
+</html>
